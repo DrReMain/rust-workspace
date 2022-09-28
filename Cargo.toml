@@ -15,4 +15,8 @@ members = [
     "12_fortuner",
     "13_calr",
     "14_lsr",
+    "tcpserver",
+    "tcpclient",
+    "httpserver",
+    "http"
 ]
