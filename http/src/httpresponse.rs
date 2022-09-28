@@ -109,6 +109,7 @@ impl<'a> HttpResponse<'a> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use pretty_assertions::assert_eq;
 
     #[test]
     fn test_response_struct_creation_200() {

@@ -28,6 +28,7 @@
       <sourceFolder url="file://$MODULE_DIR$/httpserver/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tcpclient/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tcpserver/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/webservice/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
