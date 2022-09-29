@@ -19,5 +19,6 @@ members = [
     "tcpclient",
     "httpserver",
     "http",
-    "webservice"
+    "webservice",
+    "db"
 ]

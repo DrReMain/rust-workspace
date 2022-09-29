@@ -23,7 +23,7 @@ impl Router {
                         }
                     }
                 }
-            }
+            },
             _ => {
                 let resp: HttpResponse = PageNotFoundHandler::handle(&req);
                 let _ = resp.send_response(stream);

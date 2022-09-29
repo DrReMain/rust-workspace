@@ -13,8 +13,7 @@ pub trait Handler {
         let public_path = env::var("PUBLIC_PATH").unwrap_or(default_path);
         let full_path = format!("{}/{}", public_path, file_name);
 
-        let contents = fs::read_to_string(full_path);
-        contents.ok()
+        fs::read_to_string(full_path).ok()
     }
 }
 
@@ -56,8 +55,8 @@ impl Handler for StaticPageHandler {
                     }
                     HttpResponse::new("200", Some(map), Some(contents))
                 }
-                None => HttpResponse::new("404", None, Self::load_file("404.html"))
-            }
+                None => HttpResponse::new("404", None, Self::load_file("404.html")),
+            },
         }
     }
 }
@@ -67,10 +66,9 @@ impl WebServiceHandler {
         let default_path = format!("{}/data", env!("CARGO_MANIFEST_DIR"));
         let data_path = env::var("DATA_PATH").unwrap_or(default_path);
         let full_path = format!("{}/{}", data_path, "orders.json");
-        let json_contents = fs::read_to_string(full_path);
-        let orders: Vec<OrderStatus> =
-            serde_json::from_str(json_contents.unwrap().as_str()).unwrap();
-        orders
+        let json_contents = fs::read_to_string(full_path).unwrap();
+
+        serde_json::from_str(json_contents.as_str()).unwrap()
     }
 }
 

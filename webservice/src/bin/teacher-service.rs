@@ -1,20 +1,18 @@
-extern crate core;
-
 use std::sync::Mutex;
 
-use actix_web::{App, HttpServer, web};
+use actix_web::{web, App, HttpServer};
 
 use routers::*;
 use state::AppState;
 
 #[path = "../handlers.rs"]
 mod handlers;
+#[path = "../models.rs"]
+mod models;
 #[path = "../routers.rs"]
 mod routers;
 #[path = "../state.rs"]
 mod state;
-#[path = "../models.rs"]
-mod models;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
