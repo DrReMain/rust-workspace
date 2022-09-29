@@ -20,5 +20,5 @@ members = [
     "httpserver",
     "http",
     "webservice",
-    "db"
+    "db",
 ]

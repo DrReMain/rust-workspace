@@ -2234,6 +2234,7 @@ version = "0.1.0"
 dependencies = [
  "actix-web",
  "chrono",
+ "derive_more",
  "dotenv",
  "openssl",
  "pretty_assertions",

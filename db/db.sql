@@ -1,4 +1,4 @@
-drop table if exist course;
+drop table if exists course;
 
 create table course
 (
