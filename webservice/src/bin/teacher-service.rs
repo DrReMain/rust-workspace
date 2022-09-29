@@ -1,10 +1,15 @@
+use std::env;
 use std::sync::Mutex;
 
 use actix_web::{web, App, HttpServer};
+use dotenv::dotenv;
+use sqlx::postgres::PgPoolOptions;
 
 use routers::*;
 use state::AppState;
 
+#[path = "../db_access.rs"]
+mod db_access;
 #[path = "../handlers.rs"]
 mod handlers;
 #[path = "../models.rs"]
@@ -16,10 +21,16 @@ mod state;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    dotenv().ok();
+
+    let database_url = env::var("DATABASE_URL").expect(".env 未设置DATABASE_URL");
+    let db_pool = PgPoolOptions::new().connect(&database_url).await.unwrap();
+
     let shared_data = web::Data::new(AppState {
         health_check_response: "I'm Ok.".to_string(),
         visit_count: Mutex::new(0),
-        courses: Mutex::new(vec![]),
+        // courses: Mutex::new(vec![]),
+        db: db_pool,
     });
     let app = move || {
         App::new()
