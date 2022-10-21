@@ -1,4 +1,4 @@
-use actix_web::{App, get, HttpServer, web};
+use actix_web::{get, web, App, HttpServer};
 
 struct AppState {
     app_name: String,
@@ -15,11 +15,11 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
             .app_data(web::Data::new(AppState {
-                app_name: String::from("Actix Web")
+                app_name: String::from("Actix Web"),
             }))
             .service(index)
     })
-        .bind(("127.0.0.1", 8080))?
-        .run()
-        .await
+    .bind(("127.0.0.1", 3000))?
+    .run()
+    .await
 }

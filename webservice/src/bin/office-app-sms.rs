@@ -1,6 +1,6 @@
 use std::sync::Mutex;
 
-use actix_web::{App, HttpServer, web};
+use actix_web::{web, App, HttpServer};
 
 struct AppStateWithCounter {
     counter: Mutex<i32>,
@@ -15,7 +15,7 @@ async fn index(data: web::Data<AppStateWithCounter>) -> String {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let counter = web::Data::new(AppStateWithCounter {
-        counter: Mutex::new(0)
+        counter: Mutex::new(0),
     });
 
     HttpServer::new(move || {
@@ -23,7 +23,7 @@ async fn main() -> std::io::Result<()> {
             .app_data(counter.clone())
             .route("/", web::get().to(index))
     })
-        .bind(("127.0.0.1", 8080))?
-        .run()
-        .await
+    .bind(("127.0.0.1", 3000))?
+    .run()
+    .await
 }

@@ -8,7 +8,7 @@ pub async fn get_all_teachers(tmpl: web::Data<tera::Tera>) -> Result<HttpRespons
     let awc_client = awc::Client::default();
 
     let res = awc_client
-        .get("http://localhost:8080/teachers/")
+        .get("http://localhost:3000/teachers/")
         .send()
         .await
         .unwrap()
@@ -68,7 +68,7 @@ pub async fn handle_register(
         let awc_client = awc::Client::default();
 
         let res = awc_client
-            .post("http://localhost:8080/teachers/")
+            .post("http://localhost:3000/teachers/")
             .send_json(&new_teacher)
             .await
             .unwrap()

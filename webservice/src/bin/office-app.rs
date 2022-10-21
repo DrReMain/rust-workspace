@@ -1,4 +1,4 @@
-use actix_web::{App, HttpServer, Responder, web};
+use actix_web::{web, App, HttpServer, Responder};
 
 async fn index() -> impl Responder {
     "Hello world!"
@@ -6,15 +6,11 @@ async fn index() -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    // localhost:8080/app/index.html
+    // localhost:3000/app/index.html
     HttpServer::new(|| {
-        App::new()
-            .service(
-                web::scope("/app")
-                    .route("/index.html", web::get().to(index)),
-            )
+        App::new().service(web::scope("/app").route("/index.html", web::get().to(index)))
     })
-        .bind(("127.0.0.1", 8080))?
-        .run()
-        .await
+    .bind(("127.0.0.1", 3000))?
+    .run()
+    .await
 }
