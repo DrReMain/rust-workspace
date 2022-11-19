@@ -24,4 +24,5 @@ members = [
     "webapp",
     "wasm-game-of-life",
     "wasm-client",
+    "trpl",
 ]
